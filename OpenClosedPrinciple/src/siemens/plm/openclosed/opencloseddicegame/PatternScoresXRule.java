@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PatternScoresXRule implements IScoringRule {
-	private List<Integer> pattern;
+	private int[] pattern;
 	private int score;
 
-	public PatternScoresXRule(List<Integer> pattern, int score) {
+	public PatternScoresXRule(int[] pattern, int score) {
 		this.pattern = pattern;
 		this.score = score;
 	}
@@ -16,7 +16,7 @@ public class PatternScoresXRule implements IScoringRule {
 	{
 	    int[] diceCountAfterMatch = diceCount.clone();
 
-	    pattern.stream().forEach(diceThrow -> diceCountAfterMatch[diceThrow]--);
+	    Arrays.stream(pattern).forEach(diceThrow -> diceCountAfterMatch[diceThrow]--);
 	    boolean matches = Arrays.stream(diceCountAfterMatch).allMatch(count -> count >= 0);
 	    
 	    return matches ? new ScoringRuleResult(score, diceCountAfterMatch) : new ScoringRuleResult();
