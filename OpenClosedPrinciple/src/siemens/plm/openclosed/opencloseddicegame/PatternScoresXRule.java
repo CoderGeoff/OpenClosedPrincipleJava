@@ -1,7 +1,6 @@
 package siemens.plm.openclosed.opencloseddicegame;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class PatternScoresXRule implements IScoringRule {
 	private int[] pattern;
