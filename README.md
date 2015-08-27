@@ -10,7 +10,7 @@ The exercise is based on code that calculates the score for a throw. The scoring
 1. Clone the repository 
 2. Open Eclipse
 3. Set the Eclipse workspace at the root directory of the repository
-4. Run the JUnit tests in siemens.plm.openclosed.opencloseddicegame 
+4. Run the JUnit tests in siemens.plm.openclosed.dicegame.tests 
 5. Have a look at the code. You will see the following classes
 
 In siemens.plm.openclosed.dicegame:
