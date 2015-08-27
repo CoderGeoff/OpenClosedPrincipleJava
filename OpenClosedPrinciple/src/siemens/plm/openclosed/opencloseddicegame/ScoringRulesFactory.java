@@ -1,10 +1,12 @@
 package siemens.plm.openclosed.opencloseddicegame;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
 public class ScoringRulesFactory {
 
-	public IScoringRule[] createRules() 
+	public List<IScoringRule> createRules() 
 	{
 	    Function<Integer, Boolean> twoToSixPredicate = n ->  n != 1;
 
@@ -20,7 +22,7 @@ public class ScoringRulesFactory {
 	    IScoringRule single1Scores100 = new PatternScoresXRule(new int[] { 1 }, 100);
 	    IScoringRule single5Scores50 = new PatternScoresXRule(new int[] { 5 }, 50);
 
-	    return new IScoringRule[] {
+	    return Arrays.asList(
 	        six1sScore8000,
 	        five1sScore4000,
 	        four1sScore2000,
@@ -32,6 +34,6 @@ public class ScoringRulesFactory {
 	        straightFlushScores1500,
 	        single1Scores100,
 	        single5Scores50
-	    };
+	    );
 	}
 }

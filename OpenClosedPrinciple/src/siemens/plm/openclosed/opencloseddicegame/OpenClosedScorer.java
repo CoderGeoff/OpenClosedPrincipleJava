@@ -7,9 +7,9 @@ import siemens.plm.openclosed.dicegame.IScorer;
 
 public class OpenClosedScorer implements IScorer {
 
-	private IScoringRule[] rules;
+	private List<IScoringRule> rules;
 
-	public OpenClosedScorer(IScoringRule[] rules) {
+	public OpenClosedScorer(List<IScoringRule> rules) {
 		this.rules = rules;
 	}
 
