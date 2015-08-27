@@ -1,6 +1,8 @@
 package siemens.plm.openclosed.opencloseddicegame;
 
+import java.util.OptionalInt;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class NOfAKindScoringRule implements IScoringRule {
 
@@ -16,18 +18,17 @@ public class NOfAKindScoringRule implements IScoringRule {
 
 	@Override
 	public ScoringRuleResult tryMatch(int[] diceCount)
-	{
-	    int[] diceCountAfterApplyingRule = diceCount.clone();
+	{	    
+	    OptionalInt matchingDice = IntStream.range(1, 7).filter(dice -> valuePredicate.apply(dice) && diceCount[dice] >= count).findFirst();
 	    
-	    for (int n = 1; n <= 6; ++n)
-		{
-			int diceCountRemaining = diceCountAfterApplyingRule[n];
-			if (valuePredicate.apply(n) && diceCountRemaining >= count)
-			{
-				diceCountAfterApplyingRule[n]--;
-				return new ScoringRuleResult(scoreEvaluator.apply(n), diceCountAfterApplyingRule);
-			}
-		}
+	    if (matchingDice.isPresent()) {
+	    	int matchingDiceValue = matchingDice.getAsInt();
+		    int[] diceCountAfterApplyingRule = diceCount.clone();
+	    	diceCountAfterApplyingRule[matchingDiceValue]--;
+	    	return new ScoringRuleResult(scoreEvaluator.apply(matchingDiceValue), diceCountAfterApplyingRule);
+	    }
+	    
 		return new ScoringRuleResult();
 	}
+
 }
