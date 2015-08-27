@@ -9,6 +9,8 @@ import org.junit.runners.Parameterized.Parameters;
 
 import siemens.plm.openclosed.dicegame.IScorer;
 import siemens.plm.openclosed.dicegame.Scorer;
+import siemens.plm.openclosed.opencloseddicegame.OpenClosedScorer;
+import siemens.plm.openclosed.opencloseddicegame.ScoringRulesFactory;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,7 +20,10 @@ import java.util.List;
 public class ScorerTests<T> {
     @Parameters(name = "{0}")
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {{ new Scorer() }});
+        return Arrays.asList(new Object[][] { 
+        		{ new Scorer() }, 
+        		{ new OpenClosedScorer(new ScoringRulesFactory().createRules()) }
+        		});
     }
     @Parameter
     public IScorer scorer;
