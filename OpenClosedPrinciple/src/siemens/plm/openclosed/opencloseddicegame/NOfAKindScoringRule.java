@@ -17,8 +17,7 @@ public class NOfAKindScoringRule implements IScoringRule {
 	}
 
 	@Override
-	public ScoringRuleResult tryMatch(int[] diceCount)
-	{	    
+	public ScoringRuleResult tryMatch(int[] diceCount) {	    
 	    OptionalInt matchingDice = IntStream.range(1, 7).filter(dice -> valuePredicate.apply(dice) && diceCount[dice] >= count).findFirst();
 	    
 	    if (matchingDice.isPresent()) {
