@@ -4,13 +4,13 @@ import java.util.OptionalInt;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-public class NOfAKindScoringRule implements IScoringRule {
+public class NOfAKindScoresXRule implements IScoringRule {
 
 	private Function<Integer, Boolean> valuePredicate;
 	private int count;
 	private Function<Integer, Integer> scoreEvaluator;
 
-	public NOfAKindScoringRule(Function<Integer, Boolean> valuePredicate, int count, Function<Integer, Integer> scoreEvaluator) {
+	public NOfAKindScoresXRule(Function<Integer, Boolean> valuePredicate, int count, Function<Integer, Integer> scoreEvaluator) {
         this.valuePredicate = valuePredicate;
         this.count = count;
         this.scoreEvaluator = scoreEvaluator;
