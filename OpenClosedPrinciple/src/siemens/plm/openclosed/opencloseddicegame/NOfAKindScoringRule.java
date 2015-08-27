@@ -23,7 +23,7 @@ public class NOfAKindScoringRule implements IScoringRule {
 	    if (matchingDice.isPresent()) {
 	    	int matchingDiceValue = matchingDice.getAsInt();
 		    int[] diceCountAfterApplyingRule = diceCount.clone();
-	    	diceCountAfterApplyingRule[matchingDiceValue]--;
+	    	diceCountAfterApplyingRule[matchingDiceValue] -= count;
 	    	return new ScoringRuleResult(scoreEvaluator.apply(matchingDiceValue), diceCountAfterApplyingRule);
 	    }
 	    
