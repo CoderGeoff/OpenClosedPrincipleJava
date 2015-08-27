@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Scorer {
+public class Scorer implements IScorer {
 	private Map<Integer, Integer> diceCount;
 
-	public Scorer(List<Integer> diceThrows) {
-		diceThrows.stream().forEach(value -> incrementEntry(diceCount, value, 1));
-	}
-
-	public int Score() {
+	@Override
+	public int Score(List<Integer> diceThrows) {
 	    int score = 0;
+	    Map<Integer, Integer> diceCount = new HashMap<Integer, Integer>();
 	    Map<Integer, Integer> subtractions = new HashMap<Integer, Integer>();
+		
+		diceThrows.stream().forEach(value -> incrementEntry(diceCount, value, 1));
 
 	    boolean fullStraight = true;
 	    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
