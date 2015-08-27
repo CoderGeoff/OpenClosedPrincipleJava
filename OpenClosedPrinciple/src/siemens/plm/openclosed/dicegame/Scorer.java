@@ -13,12 +13,10 @@ public class Scorer implements IScorer {
 		diceThrows.stream().forEach(value -> diceCount[value]++);
 
 	    boolean fullStraight = true;
-	    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
-	    {
+	    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow) {
 	        fullStraight = fullStraight && diceCount[diceThrow] - subtractions[diceThrow] == 1;
 	    }
-	    if (fullStraight) 
-	    {
+	    if (fullStraight) {
 	        for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
 	        {
 	            subtractions[diceThrow]++;
@@ -26,12 +24,10 @@ public class Scorer implements IScorer {
 	        score += 1500;
 	    }
 
-	    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow)
-	    {
+	    for (int diceThrow = 1; diceThrow <= 6; ++diceThrow) {
 	        int scoreMultiplier = diceThrow == 1 ? 10 : diceThrow;
 	        int numberOfDice = diceCount[diceThrow] - subtractions[diceThrow];
-	        if (numberOfDice >= 3)
-	        {
+	        if (numberOfDice >= 3) {
 	            score += (100 * scoreMultiplier) * Math.pow(2, numberOfDice - 3);
 	            subtractions[diceThrow] += numberOfDice;
 	        }
