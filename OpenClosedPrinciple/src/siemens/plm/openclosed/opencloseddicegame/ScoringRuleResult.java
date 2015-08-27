@@ -24,7 +24,7 @@ public class ScoringRuleResult {
     	return score;
     }
     
-    public int[] getRemaininDiceCount() {
+    public int[] getRemainingDiceCount() {
     	return remainingDiceCount;
     }
 }
