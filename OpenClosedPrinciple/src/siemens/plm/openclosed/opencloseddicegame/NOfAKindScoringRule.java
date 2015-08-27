@@ -1,7 +1,5 @@
 package siemens.plm.openclosed.opencloseddicegame;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 
 public class NOfAKindScoringRule implements IScoringRule {
@@ -17,15 +15,16 @@ public class NOfAKindScoringRule implements IScoringRule {
 	}
 
 	@Override
-	public ScoringRuleResult tryMatch(Map<Integer, Integer> diceCount)
+	public ScoringRuleResult tryMatch(int[] diceCount)
 	{
-		Map<Integer, Integer> diceCountAfterApplyingRule = new HashMap<Integer, Integer>(diceCount);
-		for (int n = 1; n <= 6; ++n)
+	    int[] diceCountAfterApplyingRule = diceCount.clone();
+	    
+	    for (int n = 1; n <= 6; ++n)
 		{
-			int diceCountRemaining = diceCountAfterApplyingRule.getOrDefault(n, 0);
+			int diceCountRemaining = diceCountAfterApplyingRule[n];
 			if (valuePredicate.apply(n) && diceCountRemaining >= count)
 			{
-				diceCountAfterApplyingRule.put(n, diceCountRemaining - count);
+				diceCountAfterApplyingRule[n]--;
 				return new ScoringRuleResult(scoreEvaluator.apply(n), diceCountAfterApplyingRule);
 			}
 		}

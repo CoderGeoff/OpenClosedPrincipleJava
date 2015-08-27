@@ -1,21 +1,19 @@
 package siemens.plm.openclosed.opencloseddicegame;
 
-import java.util.Map;
-
 public class ScoringRuleResult {
     private boolean matched;
     private int score;
-    private Map<Integer, Integer> remainingDiceCount;
+    private int[] remainingDiceCount;
     
     public ScoringRuleResult() {
     	matched = false;
     	score = 0;
     }
     
-    public ScoringRuleResult(int score, Map<Integer, Integer> remainingDiceCount) {
+    public ScoringRuleResult(int score, int[] diceCountAfterMatch) {
     	this.matched = true;
     	this.score = score;
-    	this.remainingDiceCount = remainingDiceCount;
+    	this.remainingDiceCount = diceCountAfterMatch.clone();
     }
     
     public boolean isMatched() {
@@ -26,7 +24,7 @@ public class ScoringRuleResult {
     	return score;
     }
     
-    public Map<Integer, Integer> getRemaininDiceCount() {
+    public int[] getRemaininDiceCount() {
     	return remainingDiceCount;
     }
 }
