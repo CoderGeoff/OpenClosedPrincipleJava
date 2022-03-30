@@ -1,4 +1,4 @@
-# OpenCloseCpp
+# OpenClosedJava
 An exercise to underline the Open Closed Principle, using Java and Eclipse. 
 Based on Java 1.8, JUnit 4 and Eclipse 4.5.0.
 
